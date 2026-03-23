@@ -45,7 +45,7 @@ Copy the `custom_components/lol_stats` folder into your Home Assistant configura
 
 ### Branding
 
-`icon.png` (next to `manifest.json`) is used for the integration card. Restart HA or hard-refresh the browser if the icon does not update.
+Home Assistant reads **`custom_components/lol_stats/icon.png`** (same folder as `manifest.json`) for the integration card. A duplicate is kept under **`brand/icon.png`** if you prefer that layout; only the file at the **integration root** is required by HA. Restart HA or hard-refresh the browser if the icon does not update.
 
 ## Configuration
 
