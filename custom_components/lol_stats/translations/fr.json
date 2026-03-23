@@ -1,0 +1,74 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "League of Legends",
+        "description": "Indique votre Riot ID, le tag, la région (plateforme) et la clé API. Les clés de développement expirent toutes les 24 h.",
+        "data": {
+          "api_key": "Clé API Riot",
+          "game_name": "Riot ID (nom de jeu)",
+          "tag_line": "Tag (sans #)",
+          "platform": "Région de jeu (plateforme)"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Clé API invalide ou expirée",
+      "not_found": "Aucun compte pour ce Riot ID + tag / région",
+      "rate_limited": "Limite de débit API atteinte. Réessayez plus tard.",
+      "unknown": "Erreur inattendue"
+    },
+    "platform": {
+      "EUW1": "Europe de l’Ouest (EUW)",
+      "EUN1": "Europe Nord & Est (EUNE)",
+      "NA1": "Amérique du Nord (NA)",
+      "BR1": "Brésil (BR)",
+      "JP1": "Japon (JP)",
+      "KR": "Corée (KR)",
+      "LA1": "Amérique latine Nord (LAN)",
+      "LA2": "Amérique latine Sud (LAS)",
+      "OC1": "Océanie (OCE)",
+      "TR1": "Turquie (TR)",
+      "RU": "Russie (RU)"
+    },
+    "queue": {
+      "ranked_solo": "Classé Solo/Duo",
+      "normal_blind": "Normal (aveugle)",
+      "ranked_flex": "Classé Flex",
+      "aram": "ARAM",
+      "normal_draft": "Normal draft",
+      "urf": "URF",
+      "one_for_all": "One for All",
+      "nexus_blitz": "Nexus Blitz",
+      "ultimate_spellbook": "Ultimate Spellbook",
+      "arena": "Arène",
+      "urf_alt": "URF (alt.)"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "nickname": {
+        "name": "Pseudo (Riot ID)"
+      },
+      "wins": {
+        "name": "Victoires"
+      },
+      "losses": {
+        "name": "Défaites"
+      },
+      "win_rate": {
+        "name": "Taux de victoire"
+      },
+      "match_1": { "name": "Partie 1" },
+      "match_2": { "name": "Partie 2" },
+      "match_3": { "name": "Partie 3" },
+      "match_4": { "name": "Partie 4" },
+      "match_5": { "name": "Partie 5" },
+      "champion_1": { "name": "Champion 1" },
+      "champion_2": { "name": "Champion 2" },
+      "champion_3": { "name": "Champion 3" },
+      "champion_4": { "name": "Champion 4" },
+      "champion_5": { "name": "Champion 5" }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "domain": "lol_stats",
+  "name": "League of Legends Stats",
+  "codeowners": [],
+  "config_flow": true,
+  "documentation": "https://github.com/djies/ha-lol",
+  "issue_tracker": "https://github.com/djies/ha-lol/issues",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "requirements": [],
+  "version": "0.2.4"
+}

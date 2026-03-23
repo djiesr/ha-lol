@@ -1,0 +1,15 @@
+# Secrets / connexion locale HA (ne pas committer)
+README-HA-DEV-LOCAL.md
+
+# Copie locale du répertoire /config Home Assistant (Raspberry Pi / partage réseau)
+# Contient secrets, base de données, backups — ne jamais versionner.
+Z/
+
+# Scripts / outils locaux (non versionnés)
+scripts/
+
+# Local env for tools/sync_to_ha (copy from ha-sync.example.env)
+tools/ha_local.env
+
+__pycache__/
+*.py[cod]
