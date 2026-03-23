@@ -142,7 +142,8 @@ class LolStatsNicknameSensor(CoordinatorEntity[LolStatsCoordinator], SensorEntit
         if data is None:
             return {}
         return {
-            "matches_window": MATCH_HISTORY_COUNT,
+            "matches_window": data.matches_window,
+            "matches_target_max": MATCH_HISTORY_COUNT,
             "riot_id": f"{data.game_name}#{data.tag_line}",
             "puuid": data.puuid,
         }

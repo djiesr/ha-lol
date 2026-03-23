@@ -8,8 +8,9 @@ Custom integration for [Home Assistant](https://www.home-assistant.io/) that pul
 
 ## Features
 
-- **Sensors**: Riot ID (summoner name), **wins / losses / win rate** over the last **50** ranked matches returned by the API, **last 5 matches** (state string + details in attributes), **top 5 champions** (name + stats in attributes).
+- **Sensors**: Riot ID (summoner name), **wins / losses / win rate** over your match window, **last 5 matches** (state string + details in attributes), **top 5 champions** (name + stats in attributes).
 - **Refresh**: about **once per minute**; one lightweight call for **match IDs**; full match payloads are fetched **only when the ID list changes** (saves API quota).
+- **Rate limits**: on **first successful load** only the **10** most recent games are fetched (fewer API calls so setup can finish). The **next** poll uses up to **50** games (Riot’s usual cap for history). Attributes `matches_window` / `matches_target_max` on the nickname sensor show the current count vs the goal (**50**).
 
 UI strings: **English** (default) and **French** (via Home Assistant language).
 

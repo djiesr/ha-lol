@@ -1,6 +1,5 @@
 # Secrets / connexion locale HA (ne pas committer)
 README-HA-DEV-LOCAL.md
-ha-sync.example.env
 
 # Copie locale du répertoire /config Home Assistant (Raspberry Pi / partage réseau)
 # Contient secrets, base de données, backups — ne jamais versionner.
