@@ -11,10 +11,8 @@ CONF_API_KEY = "api_key"
 
 DEFAULT_SCAN_INTERVAL = timedelta(seconds=60)
 
-# Fenêtre agrégée (W/L, top champions) une fois la mise en place terminée
-MATCH_HISTORY_COUNT = 50
-# Premier chargement : moins de requêtes match pour éviter le rate limit 429 à la config
-MATCH_HISTORY_INITIAL = 10
+# Fenêtre agrégée (W/L, top champions) — volontairement modeste pour rester sous les rate limits Riot
+MATCH_HISTORY_COUNT = 10
 # Derniers matchs exposés en capteurs séparés
 LAST_MATCHES_COUNT = 5
 # Top champions (capteurs séparés)

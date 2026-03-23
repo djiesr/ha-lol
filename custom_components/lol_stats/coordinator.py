@@ -15,12 +15,7 @@ from .api import (
     RiotNotFoundError,
     RiotRateLimitError,
 )
-from .const import (
-    DEFAULT_SCAN_INTERVAL,
-    DOMAIN,
-    MATCH_HISTORY_COUNT,
-    MATCH_HISTORY_INITIAL,
-)
+from .const import DEFAULT_SCAN_INTERVAL, MATCH_HISTORY_COUNT
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -60,7 +55,6 @@ class LolStatsData:
     win_rate: float | None
     matches: list[MatchSummary] = field(default_factory=list)
     champion_stats: dict[str, ChampionAgg] = field(default_factory=dict)
-    # Nombre de parties réellement agrégées (10 au premier run, puis jusqu’à 50)
     matches_window: int = 0
 
 
@@ -146,15 +140,10 @@ class LolStatsCoordinator(DataUpdateCoordinator[LolStatsData]):
         self.tag_line = tag_line
         self.puuid = puuid
         self._last_match_ids: tuple[str, ...] | None = None
-        # Après le 1er succès, on passe à MATCH_HISTORY_COUNT (50) pour les runs suivants
-        self._bootstrap_complete: bool = False
 
     async def _async_update_data(self) -> LolStatsData:
-        count = (
-            MATCH_HISTORY_COUNT if self._bootstrap_complete else MATCH_HISTORY_INITIAL
-        )
         try:
-            ids = await self.client.get_match_ids(self.puuid, count)
+            ids = await self.client.get_match_ids(self.puuid, MATCH_HISTORY_COUNT)
         except RiotAuthError as err:
             raise UpdateFailed(f"Authentication failed: {err}") from err
         except RiotNotFoundError as err:
@@ -181,7 +170,6 @@ class LolStatsCoordinator(DataUpdateCoordinator[LolStatsData]):
                 matches_window=0,
             )
             self._last_match_ids = key
-            self._bootstrap_complete = True
             return empty
 
         try:
@@ -195,11 +183,4 @@ class LolStatsCoordinator(DataUpdateCoordinator[LolStatsData]):
 
         data = _aggregate(raw_matches, self.puuid, self.game_name, self.tag_line)
         self._last_match_ids = key
-        if not self._bootstrap_complete and count == MATCH_HISTORY_INITIAL:
-            _LOGGER.debug(
-                "Bootstrap: %s parties chargées ; au prochain cycle: jusqu’à %s",
-                MATCH_HISTORY_INITIAL,
-                MATCH_HISTORY_COUNT,
-            )
-        self._bootstrap_complete = True
         return data

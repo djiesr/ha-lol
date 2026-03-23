@@ -8,9 +8,9 @@ Custom integration for [Home Assistant](https://www.home-assistant.io/) that pul
 
 ## Features
 
-- **Sensors**: Riot ID (summoner name), **wins / losses / win rate** over your match window, **last 5 matches** (state string + details in attributes), **top 5 champions** (name + stats in attributes).
+- **Sensors**: Riot ID (summoner name), **wins / losses / win rate** over the **last 10** matches, **last 5 matches** (state string + details in attributes), **top 5 champions** (name + stats in attributes).
 - **Refresh**: about **once per minute**; one lightweight call for **match IDs**; full match payloads are fetched **only when the ID list changes** (saves API quota).
-- **Rate limits**: on **first successful load** only the **10** most recent games are fetched (fewer API calls so setup can finish). The **next** poll uses up to **50** games (Riot’s usual cap for history). Attributes `matches_window` / `matches_target_max` on the nickname sensor show the current count vs the goal (**50**).
+- **Rate limits**: stats are based on **10** recent games only (keeps API usage low). The nickname sensor exposes `matches_window` and `matches_target_max` (both reflect this cap).
 
 UI strings: **English** (default) and **French** (via Home Assistant language).
 
@@ -62,15 +62,15 @@ You can add **multiple entries** (e.g. EU + NA) by adding the integration again.
 
 | Entity ID pattern | Description |
 |-------------------|-------------|
-| `nickname` | Summoner name; attributes: `matches_window`, `riot_id`, `puuid` |
-| `wins` / `losses` | Counts on the 50-match window |
+| `nickname` | Summoner name; attributes: `matches_window`, `matches_target_max`, `riot_id`, `puuid` |
+| `wins` / `losses` | Counts on the 10-match window |
 | `win_rate` | Percentage (integer), no decimals |
 | `match_1` … `match_5` | Last five matches (state + attributes) |
 | `champion_1` … `champion_5` | Top five champions by games played |
 
 ## Rate limits
 
-The integration is designed to minimize calls. A full refresh (50 match details) can still spike usage; if you see **rate limit** errors, wait a few minutes, avoid repeated failed config submissions, and ensure no other app uses the same key.
+The integration uses at most **10** match-detail calls per refresh when the match list changes. If you see **rate limit** errors, wait a few minutes, avoid repeated failed config submissions, and ensure no other app uses the same key.
 
 ## Developer tools (optional)
 
