@@ -1,6 +1,10 @@
 # League of Legends Stats (Home Assistant)
 
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
+
 Custom integration for [Home Assistant](https://www.home-assistant.io/) that pulls your League of Legends stats from the **Riot Games API** (account + **match-v5**).
+
+**Repository:** [github.com/djiesr/ha-lol](https://github.com/djiesr/ha-lol)
 
 ## Features
 
@@ -29,7 +33,7 @@ UI strings: **English** (default) and **French** (via Home Assistant language).
 ### HACS
 
 1. Open HACS → **Integrations** → menu **⋮** → **Custom repositories**.
-2. Add this repository URL, category **Integration**.
+2. Add repository URL `https://github.com/djiesr/ha-lol`, category **Integration**.
 3. Install **League of Legends Stats**.
 4. Restart Home Assistant.
 5. **Settings** → **Devices & services** → **Add integration** → **League of Legends Stats**.
